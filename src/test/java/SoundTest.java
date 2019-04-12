@@ -16,12 +16,14 @@ class SoundTest {
             0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
     };
 
+    private String source = "src/test/resources/Hiphop.wav";
+
     @Test
     void CreateSoundTest() {
         new Sound();
         new Sound(bytes);
         try {
-            new Sound("src/test/resources/Hiphop.wav");
+            new Sound(source);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (UnsupportedAudioFileException e) {
@@ -66,18 +68,19 @@ class SoundTest {
     void SaveTest() {
         Sound sound = null;
         try {
-            sound = new Sound("src/test/resources/Hiphop.wav");
+            sound = new Sound(source);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         }
+        String result = "src/test/resources/result.wav";
         try {
-            sound.save("src/test/resources/result.wav");
+            sound.save(result);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        File file = new File("src/test/resources/result.wav");
+        File file = new File(result);
         assertTrue(file.isFile());
         file.delete();
     }

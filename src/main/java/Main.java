@@ -3,14 +3,25 @@ import java.io.File;
 import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws IOException, UnsupportedAudioFileException {
+    public static void main(String[] args) {
 //        play("/home/vladimir/Музыка/Hiphop.wav");
-        Sound sound = new Sound("/home/vladimir/Музыка/Hiphop.wav");
-        sound.add(sound);
-        sound.save("src/main/resources/result.wav");
-        while (true) {
-
+        Sound sound = null;
+        try {
+            sound = new Sound("/home/vladimir/Музыка/Hiphop.wav");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
         }
+        sound.add(sound);
+        try {
+            sound.save("src/main/resources/result.wav");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        while (true) {
+//
+//        }
     }
 
     public static void play(String path) {
