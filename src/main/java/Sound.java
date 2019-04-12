@@ -1,3 +1,5 @@
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.util.Arrays;
 
 public class Sound {
@@ -17,6 +19,6 @@ public class Sound {
     }
 
     public void add(Sound sound2) {
-
+        bytes = ArrayUtils.addAll(bytes, sound2.getAudioData());
     }
 }
