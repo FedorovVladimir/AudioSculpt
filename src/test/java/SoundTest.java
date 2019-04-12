@@ -35,6 +35,6 @@ class SoundTest {
                 0, 1, 2, 3, 4, 5
         };
         sound.setData(bytes);
-        assertArrayEquals(new byte[]{0, 1, 2, 3, 4, 5}, sound.getAudioData(bytes));
+        assertArrayEquals(new byte[]{0, 1, 2, 3, 4, 5}, sound.getAudioData());
     }
 }
