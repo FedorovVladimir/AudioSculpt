@@ -61,10 +61,7 @@ public class Sound {
     }
 
     public void save(String path) throws IOException {
-        AudioSystem.write( new AudioInputStream(new ByteArrayInputStream(bytes), af, getFramesCount()), AudioFileFormat.Type.WAVE, new File(path));
-    }
-
-    private long getFramesCount() {
-        return bytes.length / af.getSampleSizeInBits() / af.getChannels() * 8;
+        long frameCount = bytes.length / af.getSampleSizeInBits() / af.getChannels() * 8;
+        AudioSystem.write( new AudioInputStream(new ByteArrayInputStream(bytes), af, frameCount), AudioFileFormat.Type.WAVE, new File(path));
     }
 }
