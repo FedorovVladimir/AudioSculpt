@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Sound {
 
     private byte[] bytes;
@@ -8,5 +10,9 @@ public class Sound {
 
     public byte[] getData(byte[] bytes) {
         return bytes;
+    }
+
+    public byte[] getAudioData() {
+        return Arrays.copyOfRange(bytes, 44, bytes.length);
     }
 }
