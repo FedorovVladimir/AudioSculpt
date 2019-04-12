@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class SoundTest {
 
     @Test
@@ -12,5 +14,13 @@ class SoundTest {
         Sound sound = new Sound();
         byte[] bytes = new byte[]{};
         sound.setData(bytes);
+    }
+
+    @Test
+    void GetDataTest() {
+        Sound sound = new Sound();
+        byte[] bytes = new byte[]{1};
+        sound.setData(bytes);
+        assertEquals(new byte[]{1}, sound.getData(bytes));
     }
 }
