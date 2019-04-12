@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.File;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -47,7 +48,7 @@ class SoundTest {
     }
 
     @Test
-    void SculptTwoSounds() {
+    void SculptTwoSoundsTest() {
         Sound sound = new Sound(bytes);
         Sound sound2 = new Sound(bytes);
         sound.add(sound2);
@@ -59,5 +60,21 @@ class SoundTest {
                 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
                 4, 5, 6, 7, 8, 9
         }, sound.getData());
+    }
+
+    @Test
+    void SaveTest() {
+        Sound sound = null;
+        try {
+            sound = new Sound("src/test/resources/Hiphop.wav");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
+        sound.save("src/test/resources/result.wav");
+        File file = new File("src/test/resources/result.wav");
+        assertTrue(file.isFile());
+        file.delete();
     }
 }
