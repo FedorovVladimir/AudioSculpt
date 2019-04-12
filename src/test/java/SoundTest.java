@@ -15,6 +15,8 @@ class SoundTest {
     @Test
     void CreateSoundTest() {
         new Sound();
+        new Sound(bytes);
+        new Sound("path");
     }
 
     @Test
