@@ -6,6 +6,14 @@ public class Sound {
 
     private byte[] bytes;
 
+    public Sound() {
+
+    }
+
+    public Sound(byte[] bytes) {
+        this.bytes = bytes;
+    }
+
     public void setData(byte[] bytes) {
         this.bytes = bytes;
     }
