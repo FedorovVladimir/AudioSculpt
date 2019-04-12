@@ -3,8 +3,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
-        play("/home/vladimir/Музыка/Hiphop.wav");
+    public static void main(String[] args) throws IOException, UnsupportedAudioFileException {
+//        play("/home/vladimir/Музыка/Hiphop.wav");
+        Sound sound = new Sound("/home/vladimir/Музыка/Hiphop.wav");
+        sound.add(sound);
+        sound.save("src/main/resources/result.wav");
         while (true) {
 
         }

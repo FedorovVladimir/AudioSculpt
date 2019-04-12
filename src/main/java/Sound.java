@@ -65,6 +65,6 @@ public class Sound {
     }
 
     private long getFramesCount() {
-        return 0;
+        return bytes.length / af.getSampleSizeInBits() / af.getChannels() * 8;
     }
 }
