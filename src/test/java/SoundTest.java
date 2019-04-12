@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SoundTest {
 
-    byte[] bytes = new byte[]{
+    private byte[] bytes = new byte[]{
             0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
             0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
             0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
@@ -15,6 +15,7 @@ class SoundTest {
     @Test
     void CreateSoundTest() {
         new Sound();
+        new Sound(bytes);
     }
 
     @Test
