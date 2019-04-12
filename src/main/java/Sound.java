@@ -8,11 +8,15 @@ public class Sound {
         this.bytes = bytes;
     }
 
-    public byte[] getData(byte[] bytes) {
+    public byte[] getData() {
         return bytes;
     }
 
     public byte[] getAudioData() {
         return Arrays.copyOfRange(bytes, 44, bytes.length);
+    }
+
+    public void add(Sound sound2) {
+
     }
 }
