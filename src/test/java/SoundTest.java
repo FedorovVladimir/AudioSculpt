@@ -21,7 +21,7 @@ class SoundTest {
         new Sound();
         new Sound(bytes);
         try {
-            new Sound("path");
+            new Sound("src/test/resources/Hiphop.wav");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (UnsupportedAudioFileException e) {
@@ -72,7 +72,11 @@ class SoundTest {
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         }
-        sound.save("src/test/resources/result.wav");
+        try {
+            sound.save("src/test/resources/result.wav");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         File file = new File("src/test/resources/result.wav");
         assertTrue(file.isFile());
         file.delete();

@@ -1,9 +1,7 @@
 import org.apache.commons.lang3.ArrayUtils;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.sampled.*;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -60,5 +58,13 @@ public class Sound {
 
     public void add(Sound sound2) {
         bytes = ArrayUtils.addAll(bytes, sound2.getAudioData());
+    }
+
+    public void save(String path) throws IOException {
+        AudioSystem.write( new AudioInputStream(new ByteArrayInputStream(bytes), af, getFramesCount()), AudioFileFormat.Type.WAVE, new File(path));
+    }
+
+    private long getFramesCount() {
+        return 0;
     }
 }
