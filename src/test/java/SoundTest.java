@@ -57,8 +57,14 @@ class SoundTest {
                 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
                 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
         };
-        sound.setData(bytes2);
+        sound2.setData(bytes2);
         sound.add(sound2);
-        assertArrayEquals(new byte[]{5, 6, 7, 8, 9, 5, 6, 7, 8, 9}, sound.getData());
+        assertArrayEquals(new byte[]{
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                0, 1, 2, 3,
+                4, 5, 6, 7, 8, 9, 4, 5, 6, 7, 8, 9}, sound.getData());
     }
 }
