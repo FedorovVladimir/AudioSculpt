@@ -1,10 +1,18 @@
 import org.apache.commons.lang3.ArrayUtils;
 
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class Sound {
 
     private byte[] bytes;
+    private AudioFormat af = null;
 
     public Sound() {
 
@@ -12,6 +20,30 @@ public class Sound {
 
     public Sound(byte[] bytes) {
         this.bytes = bytes;
+    }
+
+    public Sound(String path) throws IOException, UnsupportedAudioFileException {
+        File file = new File(path);
+
+        if(!file.exists()) {
+            throw new FileNotFoundException(file.getAbsolutePath());
+        }
+
+        // получаем поток с аудио-данными
+        AudioInputStream ais = AudioSystem.getAudioInputStream(file);
+
+        // получаем информацию о формате
+        af = ais.getFormat();
+
+        // количество кадров в файле
+        long framesCount = ais.getFrameLength();
+
+        // размер данных в байтах
+        long dataLength = framesCount*af.getSampleSizeInBits()*af.getChannels()/8;
+
+        // читаем в память все данные из файла разом
+        bytes = new byte[(int) dataLength];
+        ais.read(bytes);
     }
 
     public void setData(byte[] bytes) {

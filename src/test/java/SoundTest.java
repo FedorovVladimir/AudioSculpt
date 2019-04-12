@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.Test;
 
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SoundTest {
@@ -16,7 +19,13 @@ class SoundTest {
     void CreateSoundTest() {
         new Sound();
         new Sound(bytes);
-        new Sound("path");
+        try {
+            new Sound("path");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
